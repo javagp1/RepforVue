@@ -1,5 +1,6 @@
 <template>
   welcome
+  <button>ok</button>
 </template>
 
 <script>
