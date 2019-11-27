@@ -47,31 +47,29 @@
 							<tr class="text-warning">
 								<td>序号</td>
 								<td>编号</td>
-						    <td>状态</td>
+						  
 								<td>下单日期</td>
 								<td>操作</td>
-						
+
 							</tr>
-						
+
 						</thead>
-						
+
 						<tbody>
 							<tr v-for="(order,index) in orderinfoes" >
 								<td>{{index+1}}</td>
 								<td>
-									{{order.ofid}}
-									
+									{{order.ofid}}<button class="btn btn-danger" @click="toAliPay(order.ofid)">付款</button></td>
+
 								</td>
-						    <td v-if="order.ofstate==1">未付款 &nbsp;&nbsp;&nbsp;
-									<button class="btn btn-danger" @click="toAliPay(order.ofid)">付款</button></td>
-						    <td v-else="order.ofstate==2" >已付款 </td>
+						    
 								<td>{{order.ofdate}}</td>
 								<td>
 									<button class="btn btn-link btn-sm">
 										<i class="fa fa-close fa-2x  text-danger"></i>
 									</button>
 								</td>
-						
+
 							</tr>
 						</tbody>
 
