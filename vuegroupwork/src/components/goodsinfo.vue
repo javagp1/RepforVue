@@ -133,7 +133,7 @@
 			getInfo(pagenum){
 				var ob=this;
 
-				var url="http://192.168.1.14:8088/springmvc190806/goodsinfocontroller/getinfoes";
+				var url="http://127.0.0.1:8088/springmvc190806/goodsinfocontroller/getinfoes";
 				$.ajax(url,{
 						method:"post",
 						data:{"pagenum":pagenum},
@@ -145,7 +145,7 @@
 
 							for(var i in result.infoes){
 								result.infoes[i].stl={
-									"background-image": "url('http://192.168.1.14:8088/springmvc190806/tp/"+result.infoes[i].gimgurl+"')",
+									"background-image": "url('http://127.0.0.1:8088/springmvc190806/tp/"+result.infoes[i].gimgurl+"')",
 								};
 
 
