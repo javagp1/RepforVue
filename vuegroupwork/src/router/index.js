@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import main from '@/components/main'
 import maingoodsinfodetails from '@/components/main_goodsinfo_details'
-import regedit from '@/components/regedit.vue'
+import register from '@/components/register.vue'
 import login from '@/components/login.vue'
 import cart from '@/components/cart.vue'
 import orderinfo from '@/components/orderinfo.vue'
@@ -23,9 +23,9 @@ export default new Router({
       component: maingoodsinfodetails
     },
      {
-          path: '/regedit',
-          name: 'regedit',
-          component: regedit
+          path: '/register',
+          name: 'register',
+          component: register
         },
         {
              path: '/login',

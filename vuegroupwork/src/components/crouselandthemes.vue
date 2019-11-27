@@ -2,7 +2,7 @@
   <div class="dv_main_1">
     <div class="dv_carousel"  @mouseover="stopchangeImg()" @mouseout="changeImg_auto()">
 
-     <transition name="fade" v-for="(cr,index) in carousels">
+     <transition name="fade" v-for="(cr,index) in carousels" key="index">
      	<div class="carousel"  v-if="index==c_index"  :style="cr"></div>
      </transition>
      <div class="toolbar_btn_next_previous">
