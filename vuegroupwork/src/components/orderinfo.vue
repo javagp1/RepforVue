@@ -45,7 +45,7 @@
 			pay(){
 
 				var ob=this;
-				var url="http://192.168.1.13:8088/springmvc190806/ajaxctr/mkOrderInfo";
+				var url="http://192.168.1.14:8088/springmvc190806/ajaxctr/mkOrderInfo";
 				$.ajax(url,{
 				data:{
 					address:ob.address,
