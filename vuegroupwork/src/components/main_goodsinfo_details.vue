@@ -367,7 +367,7 @@
 			getAllGoodsSize(){
 				var ob=this;
 
-				var url="http://192.168.1.13:8088/springmvc190806/ajaxctr/getallgoodssize";
+				var url="http://192.168.1.19:8086/springMVC/goodssizectrl/getallgoodssize";
 				$.ajax(url,{
 						method:"get",
 						dataType:"json",
@@ -384,7 +384,7 @@
 
 				var ob=this;
 
-				var url="http://192.168.1.13:8088/springmvc190806/ajaxctr/getgoodsdetailbygdid";
+				var url="http://192.168.1.19:8086/springMVC/goodsinfoctrl/getgoodsinfodetailbygdid";
 				$.ajax(url,{
 						method:"get",
 						data:{"gdid":ob.gdid},
@@ -392,7 +392,7 @@
 						xhrFields: {"withCredentials": true},
 						success:function(result){
 							ob.goodsinfo=result;
-							ob.gimg_style={backgroundImage:"url('http://192.168.1.13:8088/springmvc190806/tp/"+result.gimgurl+"')"}
+							ob.gimg_style={backgroundImage:"url('http://192.168.1.19:8086/springMVC/tp/"+result.gimgurl+"')"}
 
 						}
 					}

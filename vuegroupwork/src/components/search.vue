@@ -89,7 +89,7 @@
         	this.$router.push({"name":"login"});
         	return;
         }
-        this.$router.push({"name":"orderinfo_records"});	
+        this.$router.push({"name":"orderinfo_records"});
        },
 
       browseCart(){
@@ -194,7 +194,7 @@
       					return;
       				}
 
-      				var url="http://192.168.1.13:8088/springmvc190806/ajaxctr/goods_top10";
+      				var url="http://192.168.1.19:8086/springMVC/goodsinfoctrl/gettopten";
       				$.ajax(url,{
       				data:{"keyword":ob.keyword},
       				xhrFields: {"withCredentials": true},
