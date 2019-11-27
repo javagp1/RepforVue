@@ -3,7 +3,7 @@
   <div class="toolbar_top1">
 
     <div class="pull-right" style="color:#999999;font-size: 15px;" >
-      <router-link to="/regedit" class="zhuce">注册</router-link>
+
       <button class="btn btn-link" @click="browseMain()"><i class="fa fa-home"  ></i>&nbsp;&nbsp;首页&nbsp;&nbsp;&nbsp;&nbsp;|</button>
       <button class="btn btn-link"><i class="fa fa-shopping-bag"></i>&nbsp;&nbsp;&nbsp;&nbsp;商城&nbsp;&nbsp;&nbsp;&nbsp;|</button>
       <button class="btn btn-link">我的订单&nbsp;&nbsp;&nbsp;&nbsp;|</button>
