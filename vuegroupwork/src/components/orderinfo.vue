@@ -51,7 +51,7 @@
 					address:ob.address,
 					recipient:ob.recipient,
 					contactnumber:ob.contactnumber,
-					"ctids":ob.ctids
+					"ctid":ob.ctids
 
 				},
 				xhrFields: {"withCredentials": true},
