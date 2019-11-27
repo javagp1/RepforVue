@@ -306,7 +306,7 @@
 
 				var ob=this;
 				ob.useronline=false;
-				var url="http://192.168.1.13:8088/springmvc190806/ajaxctr/useronline";
+				var url="http://192.168.1.19:8086/springMVC/userctrl/useronline";
 				$.ajax(url,{
 				xhrFields: {"withCredentials": true},
 				async:false,
