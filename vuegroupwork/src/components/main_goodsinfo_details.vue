@@ -242,7 +242,7 @@
 				<div class="icon_wechat"></div>
 			</div>
         <newcloth></newcloth>
- 
+
 
 
 		</div>
@@ -328,7 +328,7 @@
 				if(ob.gscount_show){
 					return ;
 				}
-				var url="http://192.168.1.13:8088/springmvc190806/ajaxctr/addtocart";
+				var url="http://192.168.1.19:8086/springMVC/cartctrl/addtocart";
 				$.ajax(url,{
 						method:"get",
 						data:{
