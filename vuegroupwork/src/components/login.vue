@@ -27,7 +27,7 @@
 
       <button class="submit" @click="login()">登录</button>
 
-
+ 
     </div>
     <div class="iptbox"><a @click="register()">免费注册</a> </div>
     </div>
