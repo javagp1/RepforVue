@@ -306,7 +306,7 @@
 
 				var ob=this;
 				ob.useronline=false;
-				var url="http://127.0.0.1:8088/springmvc190806/ajaxctr/useronline";
+				var url="http://192.168.1.13:8088/springmvc190806/ajaxctr/useronline";
 				$.ajax(url,{
 				xhrFields: {"withCredentials": true},
 				async:false,
@@ -328,7 +328,7 @@
 				if(ob.gscount_show){
 					return ;
 				}
-				var url="http://127.0.0.1:8088/springmvc190806/ajaxctr/addtocart";
+				var url="http://192.168.1.13:8088/springmvc190806/ajaxctr/addtocart";
 				$.ajax(url,{
 						method:"get",
 						data:{
@@ -367,7 +367,7 @@
 			getAllGoodsSize(){
 				var ob=this;
 
-				var url="http://127.0.0.1:8088/springmvc190806/ajaxctr/getallgoodssize";
+				var url="http://192.168.1.13:8088/springmvc190806/ajaxctr/getallgoodssize";
 				$.ajax(url,{
 						method:"get",
 						dataType:"json",
@@ -384,7 +384,7 @@
 
 				var ob=this;
 
-				var url="http://127.0.0.1:8088/springmvc190806/ajaxctr/getgoodsdetailbygdid";
+				var url="http://192.168.1.13:8088/springmvc190806/ajaxctr/getgoodsdetailbygdid";
 				$.ajax(url,{
 						method:"get",
 						data:{"gdid":ob.gdid},
@@ -392,7 +392,7 @@
 						xhrFields: {"withCredentials": true},
 						success:function(result){
 							ob.goodsinfo=result;
-							ob.gimg_style={backgroundImage:"url('http://127.0.0.1:8088/springmvc190806/tp/"+result.gimgurl+"')"}
+							ob.gimg_style={backgroundImage:"url('http://192.168.1.13:8088/springmvc190806/tp/"+result.gimgurl+"')"}
 
 						}
 					}

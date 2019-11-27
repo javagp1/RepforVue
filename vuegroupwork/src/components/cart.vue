@@ -203,7 +203,7 @@
 				this.gdcount=count;
 
 				var ob=this;
-				var url="http://127.0.0.1:8088/springmvc190806/ajaxctr/changecountforcart";
+				var url="http://192.168.1.13:8088/springmvc190806/ajaxctr/changecountforcart";
 				$.ajax(url,{
 				data:{ctid:ob.ctid,gdcount:ob.gdcount},
 				xhrFields: {"withCredentials": true},
@@ -225,7 +225,7 @@
 			getCartList(){
 
 				var ob=this;
-				var url="http://127.0.0.1:8088/springmvc190806/ajaxctr/getcartlist";
+				var url="http://192.168.1.13:8088/springmvc190806/ajaxctr/getcartlist";
 				$.ajax(url,{
 				dataType:"json",
 				xhrFields: {"withCredentials": true},
@@ -233,7 +233,7 @@
 					ob.cartlist=result;
 					for(var i in result){
 						ob.cartlist[i].bgimg={
-							"background-image": "url('http://127.0.0.1:8088/springmvc190806/tp/"+result[i].gimgurl+"')"
+							"background-image": "url('http://192.168.1.13:8088/springmvc190806/tp/"+result[i].gimgurl+"')"
 						};
 
 					}

@@ -27,13 +27,17 @@
 
       <button class="submit" @click="login()">登录</button>
 
-
+ 
     </div>
     <div class="iptbox"><a @click="register()">免费注册</a> </div>
     </div>
     </div>
   </div>
+<<<<<<< HEAD
   </div>
+=======
+  </div> 
+>>>>>>> ac72d955b9fe449b65ab1f76a0a9ea9b380a9bbc
 </template>
 
 <script>

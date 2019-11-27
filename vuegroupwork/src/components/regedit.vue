@@ -97,7 +97,7 @@
 			<div>
 				验&nbsp;&nbsp;证&nbsp;&nbsp;码：<input  v-model="validCode" type="text" style="width: 100px;" @blur="validCodeIsOK()" />
 
-        <img id="keycode" @click="changeCode()" style="float: right;" src="http://127.0.0.1:8088/springmvc190806/vaildCode"   />
+        <img id="keycode" @click="changeCode()" style="float: right;" src="http://192.168.1.13:8088/springmvc190806/vaildCode"   />
 		    <br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <span class="text-danger">{{validCode_error}}</span>
       </div>
@@ -145,7 +145,7 @@
 
 					var ob=this;
 
-					var url="http://127.0.0.1:8088/springmvc190806/ajaxctr/doregedit";
+					var url="http://192.168.1.13:8088/springmvc190806/ajaxctr/doregedit";
 					$.ajax(url,{
 							method:"get",
 							data:{"logname":ob.logname,"password":ob.password},
@@ -195,7 +195,7 @@
 
 				var ob=this;
 
-				var url="http://127.0.0.1:8088/springmvc190806/ajaxctr/validisok";
+				var url="http://192.168.1.13:8088/springmvc190806/ajaxctr/validisok";
 				$.ajax(url,{
 						method:"get",
 						data:{"keycode":ob.validCode},
@@ -231,7 +231,7 @@
 			,lognameIsOK(){
 				var ob=this;
 
-				var url="http://127.0.0.1:8088/springmvc190806/ajaxctr/lognameisok";
+				var url="http://192.168.1.13:8088/springmvc190806/ajaxctr/lognameisok";
 				$.ajax(url,{
 						method:"get",
 						data:{"logname":ob.logname},
@@ -258,7 +258,7 @@
 			,
 			changeCode(){
 
-				$("#keycode")[0].src="http://127.0.0.1:8088/springmvc190806/vaildCode";
+				$("#keycode")[0].src="http://192.168.1.13:8088/springmvc190806/vaildCode";
 
 			},
 
