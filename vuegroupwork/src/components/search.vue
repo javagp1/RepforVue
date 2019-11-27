@@ -3,7 +3,7 @@
    <transition name="slide-fade">
   <div class="toolbar_top2" :style="style_1" v-if="searchshow">
     <div style="width: 1200px; margin: auto;height: 100%;position: relative;">
-     <i class="fa fa-cloud" style=" float: left;font-size: 30px;font-weight: bold;color: #FF4466; position: absolute;top: 40px;left: 25px;">&nbsp;蘑菇街</i>
+    <img src="../../static/img/logo260x200.png" style=" float: left;width: 130px; height: 90px;margin-left: 30px; margin-top: 10px;"  >
    <i class="fa fa-bars" style="font-size: 20px; position: absolute; left: 170px; top: 45px; float: left;">目录</i>
    <!-- 商品搜索 div-->
     <div class="dv_search">
