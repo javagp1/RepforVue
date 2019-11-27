@@ -21,7 +21,7 @@
         <span class="tips text-danger">{{password_valid}}</span>
       </p>
       <p><label>验证码:</label> <input placeholder="请输入验证码" type="text" style="width: 180px;" v-model="validCode" />
-        <img id="keycode" @click="changeCode()" src="http://127.0.0.1:8086/springMVC/vaildCode" style="float: left;width: 160px;height: 40px;cursor: pointer;" />
+        <img id="keycode" @click="changeCode()" src="http://192.168.1.19:8086/springMVC/vaildCode" style="float: left;width: 160px;height: 40px;cursor: pointer;" />
         <span class="tips text-danger">{{validCode_error}}</span>
       </p><br />
       <p>

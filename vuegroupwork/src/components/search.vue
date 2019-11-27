@@ -89,7 +89,7 @@
         	this.$router.push({"name":"login"});
         	return;
         }
-        this.$router.push({"name":"orderinfo_records"});	
+        this.$router.push({"name":"orderinfo_records"});
        },
 
       browseCart(){
@@ -104,7 +104,7 @@
       			,
       			logout(){
       				var ob=this;
-              var url="http://192.168.1.13:8088/springmvc190806/ajaxctr/logout";
+              var url="http://192.168.1.19:8086/springMVC/userctrl/logout";
               $.ajax(url,{
               xhrFields: {"withCredentials": true},
               success:function(result){
@@ -119,7 +119,7 @@
       			}
       			,valid_userOnline(){
       				var ob=this;
-      				var url="http://192.168.1.13:8088/springmvc190806/ajaxctr/useronline";
+      				var url="http://192.168.1.19:8086/springMVC/userctrl/useronline";
       				$.ajax(url,{
       				xhrFields: {"withCredentials": true},
       				async:false,
@@ -194,7 +194,7 @@
       					return;
       				}
 
-      				var url="http://192.168.1.13:8088/springmvc190806/ajaxctr/goods_top10";
+      				var url="http://192.168.1.19:8086/springMVC/goodsinfoctrl/gettopten";
       				$.ajax(url,{
       				data:{"keyword":ob.keyword},
       				xhrFields: {"withCredentials": true},

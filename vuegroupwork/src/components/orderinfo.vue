@@ -45,13 +45,13 @@
 			pay(){
 
 				var ob=this;
-				var url="http://192.168.1.13:8088/springmvc190806/ajaxctr/mkOrderInfo";
+				var url="http://192.168.1.19:8086/springMVC/orderinfoctrl/creatorder";
 				$.ajax(url,{
 				data:{
 					address:ob.address,
 					recipient:ob.recipient,
 					contactnumber:ob.contactnumber,
-					"ctids":ob.ctids
+					"ctid":ob.ctids
 
 				},
 				xhrFields: {"withCredentials": true},
