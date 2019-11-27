@@ -114,7 +114,7 @@
 							<input type="text" v-model="validCode" @blur="validCodeIsOK()"  class="form-control"  style="float: left;width: 100px;" />
 
 						</div>
-						<img src="http://192.168.1.13:8088/springmvc190806/vaildCode" id="keycode" @click="changeCode()"/>
+						<img src="http://127.0.0.1:8088/springmvc190806/vaildCode" id="keycode" @click="changeCode()"/>
 					</div>
 					<br />
 					<hr />
@@ -170,7 +170,7 @@
 
 				var ob=this;
 
-				var url="http://192.168.1.13:8088/springmvc190806/ajaxctr/login";
+				var url="http://127.0.0.1:8088/springmvc190806/ajaxctr/login";
 				$.ajax(url,{
 						method:"get",
 						data:{"logname":ob.logname,"password":ob.password},
@@ -196,7 +196,7 @@
 
 				var ob=this;
 
-				var url="http://192.168.1.13:8088/springmvc190806/ajaxctr/validisok";
+				var url="http://127.0.0.1:8088/springmvc190806/ajaxctr/validisok";
 				$.ajax(url,{
 						method:"get",
 						async:false,
@@ -221,7 +221,7 @@
 			,
 			changeCode(){
 
-				$("#keycode")[0].src="http://192.168.1.13:8088/springmvc190806/vaildCode";
+				$("#keycode")[0].src="http://127.0.0.1:8088/springmvc190806/vaildCode";
 
 			},
 		}
