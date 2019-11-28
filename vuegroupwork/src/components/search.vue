@@ -104,7 +104,7 @@
       			,
       			logout(){
       				var ob=this;
-              var url="http://192.168.1.19:8086/springMVC/userctrl/logout";
+              var url="http://127.0.0.1:8086/springMVC/userctrl/logout";
               $.ajax(url,{
               xhrFields: {"withCredentials": true},
               success:function(result){
@@ -119,7 +119,7 @@
       			}
       			,valid_userOnline(){
       				var ob=this;
-      				var url="http://192.168.1.19:8086/springMVC/userctrl/useronline";
+      				var url="http://127.0.0.1:8086/springMVC/userctrl/useronline";
       				$.ajax(url,{
       				xhrFields: {"withCredentials": true},
       				async:false,
@@ -194,7 +194,7 @@
       					return;
       				}
 
-      				var url="http://192.168.1.19:8086/springMVC/goodsinfoctrl/gettopten";
+      				var url="http://127.0.0.1:8086/springMVC/goodsinfoctrl/gettopten";
       				$.ajax(url,{
       				data:{"keyword":ob.keyword},
       				xhrFields: {"withCredentials": true},

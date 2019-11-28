@@ -108,7 +108,7 @@
 		methods:{
 			toAliPay(orderid){
 
-				window.open("http://192.168.1.19:8086/springMVC/ali/pay?ofid="+orderid);
+				window.open("http://127.0.0.1:8086/springMVC/ali/pay?ofid="+orderid);
 
 
 
@@ -118,7 +118,7 @@
 			getOrderInfoes(){
 
 				var ob=this;
-				var url="http://192.168.1.19:8086/springMVC/orderinfoctrl/getorderinfoes";
+				var url="http://127.0.0.1:8086/springMVC/orderinfoctrl/getorderinfoes";
 				$.ajax(url,{
 				dataType:"json",
 				xhrFields: {"withCredentials": true},
