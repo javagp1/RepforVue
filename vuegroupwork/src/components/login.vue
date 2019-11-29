@@ -28,7 +28,7 @@
     </div>
     <div class="iptbox">
 
-      <button v-if="istuser==0" class="submit" @click="login()">登录</button>
+      <button v-if="istuser==0" class="submit" @click="login()">登录</button> 
       <button v-else="istuser==1" class="submit" @click="slogin()">登录</button>
 
 
