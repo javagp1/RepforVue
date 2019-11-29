@@ -20,7 +20,7 @@
     <div class="iptbox">
       <div style="height: 50px;width: 315px;margin: auto;">
         <input class="valid" placeholder="验证码"  type="text"  v-model="validCode" />
-        <img id="keycode" @click="changeCode()" src="http://192.168.1.19:8086/springMVC/vaildCode" style="margin-left: 0px;cursor: pointer;" height="40px"/>
+        <img id="keycode" @click="changeCode()" src="http://127.0.0.1:8086/springMVC/vaildCode" style="margin-left: 0px;cursor: pointer;" height="40px"/>
       </div>
     </div>
     <div class="iptbox">
@@ -77,7 +77,7 @@
             return;
           }
 
-          var url = "http://192.168.1.19:8086/springMVC/userctrl/login";
+          var url = "http://127.0.0.1:8086/springMVC/userctrl/login";
           $.ajax(url, {
             method: "post",
             data: {
@@ -130,7 +130,7 @@
 
         var ob = this;
 
-        var url = "http://192.168.1.19:8086/springMVC/userctrl/validisok";
+        var url = "http://127.0.0.1:8086/springMVC/userctrl/validisok";
         $.ajax(url, {
           method: "get",
           async: false,
@@ -161,7 +161,7 @@
 
       changeCode() {
 
-        $("#keycode")[0].src = "http://192.168.1.19:8086/springMVC/vaildCode";
+        $("#keycode")[0].src = "http://127.0.0.1:8086/springMVC/vaildCode";
 
       },
       register(){

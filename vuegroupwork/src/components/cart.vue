@@ -49,7 +49,7 @@
 								<td>尺码</td>
 								<td>单价</td>
 								<td>数量</td>
-								<td>单项合集</td>
+								<td>单项合计</td>
 								<td>操作</td>
 								<td>全部  <input type="checkbox" value="1" v-model="chooseAll" /> 结算</td>
 
@@ -203,7 +203,7 @@
 				this.gdcount=count;
 
 				var ob=this;
-				var url="http://192.168.1.19:8086/springMVC/cartctrl/changecountforcart";
+				var url="http://127.0.0.1:8086/springMVC/cartctrl/changecountforcart";
 				$.ajax(url,{
 				data:{ctid:ob.ctid,gdcount:ob.gdcount},
 				xhrFields: {"withCredentials": true},
@@ -225,7 +225,7 @@
 			getCartList(){
 
 				var ob=this;
-				var url="http://192.168.1.19:8086/springMVC/cartctrl/getcartlist";
+				var url="http://127.0.0.1:8086/springMVC/cartctrl/getcartlist";
 				$.ajax(url,{
 				dataType:"json",
 				xhrFields: {"withCredentials": true},
@@ -233,7 +233,7 @@
 					ob.cartlist=result;
 					for(var i in result){
 						ob.cartlist[i].bgimg={
-							"background-image": "url('http://192.168.1.19:8086/springMVC/tp/"+result[i].gimgurl+"')"
+							"background-image": "url('http://127.0.0.1:8086/springMVC/tp/"+result[i].gimgurl+"')"
 						};
 
 					}

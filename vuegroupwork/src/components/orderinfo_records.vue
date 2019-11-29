@@ -47,7 +47,7 @@
 							<tr class="text-warning">
 								<td>序号</td>
 								<td>编号</td>
-						  
+                <td>状态</td>
 								<td>下单日期</td>
 								<td>操作</td>
 
@@ -58,12 +58,12 @@
 						<tbody>
 							<tr v-for="(order,index) in orderinfoes" >
 								<td>{{index+1}}</td>
-								<td>
-									{{order.ofid}}<button class="btn btn-danger" @click="toAliPay(order.ofid)">付款</button></td>
+								
 
-								</td>
-						    
 								<td>{{order.ofdate}}</td>
+                <td v-if="order.ofstate==1">未付款 &nbsp;&nbsp;&nbsp;
+                	<button class="btn btn-danger" @click="toAliPay(order.ofid)">付款</button></td>
+                <td v-else="order.ofstate==2" >已付款 </td>
 								<td>
 									<button class="btn btn-link btn-sm">
 										<i class="fa fa-close fa-2x  text-danger"></i>
@@ -108,7 +108,7 @@
 		methods:{
 			toAliPay(orderid){
 
-				window.open("http://192.168.1.19:8086/springMVC/ali/pay?ofid="+orderid);
+				window.open("http://127.0.0.1:8086/springMVC/ali/pay?ofid="+orderid);
 
 
 
@@ -118,7 +118,7 @@
 			getOrderInfoes(){
 
 				var ob=this;
-				var url="http://192.168.1.19:8086/springMVC/orderinfoctrl/getorderinfoes";
+				var url="http://127.0.0.1:8086/springMVC/orderinfoctrl/getorderinfoes";
 				$.ajax(url,{
 				dataType:"json",
 				xhrFields: {"withCredentials": true},

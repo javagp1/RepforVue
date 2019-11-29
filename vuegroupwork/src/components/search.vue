@@ -26,7 +26,7 @@
     	 					<i class="fa fa-commenting-o fa-2x"></i>
     	 					消息
     	 				</div>
-    	 				<div class="toolbar_top2_user_ct">
+    	 				<div class="toolbar_top2_user_ct" @click="gotocollection()">
     	 					<i class="fa fa-star-o fa-2x"></i>
     	 					收藏
     	 				</div>
@@ -104,14 +104,16 @@
       			,
       			logout(){
       				var ob=this;
-              var url="http://192.168.1.19:8086/springMVC/userctrl/logout";
+              var url="http://127.0.0.1:8086/springMVC/userctrl/logout";
               $.ajax(url,{
               xhrFields: {"withCredentials": true},
+              async:true,
               success:function(result){
                 if(result){
 
+                  
+                  window.location.href="http://127.0.0.1:8080";
                   ob.useronline="";
-                  ob.$router.push({"name":"main"});
                 }
 
               }});
@@ -119,7 +121,7 @@
       			}
       			,valid_userOnline(){
       				var ob=this;
-      				var url="http://192.168.1.19:8086/springMVC/userctrl/useronline";
+      				var url="http://127.0.0.1:8086/springMVC/userctrl/useronline";
       				$.ajax(url,{
       				xhrFields: {"withCredentials": true},
       				async:false,
@@ -194,7 +196,7 @@
       					return;
       				}
 
-      				var url="http://192.168.1.19:8086/springMVC/goodsinfoctrl/gettopten";
+      				var url="http://127.0.0.1:8086/springMVC/goodsinfoctrl/gettopten";
       				$.ajax(url,{
       				data:{"keyword":ob.keyword},
       				xhrFields: {"withCredentials": true},
@@ -206,7 +208,12 @@
 
       				}});
 
-      			}
+      			},
+            gotocollection(){
+              this.$router.push({
+                "name":"usercollection"
+              })
+            }
 
 
 			}

@@ -21,7 +21,7 @@
         <span class="tips text-danger">{{password_valid}}</span>
       </p>
       <p><label>验证码:</label> <input placeholder="请输入验证码" type="text" style="width: 180px;" v-model="validCode" />
-        <img id="keycode" @click="changeCode()" src="http://192.168.1.19:8086/springMVC/vaildCode" style="float: left;width: 160px;height: 40px;cursor: pointer;" />
+        <img id="keycode" @click="changeCode()" src="http://127.0.0.1:8086/springMVC/vaildCode" style="float: left;width: 160px;height: 40px;cursor: pointer;" />
         <span class="tips text-danger">{{validCode_error}}</span>
       </p><br />
       <p>
@@ -80,7 +80,7 @@
 
           var ob = this;
 
-          var url = "http://192.168.1.19:8086/springMVC/userctrl/doregister";
+          var url = "http://127.0.0.1:8086/springMVC/userctrl/doregister";
           $.ajax(url, {
                 method: "get",
                 data: {
@@ -145,7 +145,7 @@
 
               var ob = this;
 
-              var url = "http://192.168.1.19:8086/springMVC/userctrl/validisok";
+              var url = "http://127.0.0.1:8086/springMVC/userctrl/validisok";
               $.ajax(url, {
                 method: "get",
                 async: false,
@@ -182,7 +182,7 @@
             lognameIsOK() {
               var ob = this;
 
-              var url = "http://192.168.1.19:8086/springMVC/userctrl/lognameisok";
+              var url = "http://127.0.0.1:8086/springMVC/userctrl/lognameisok";
               $.ajax(url, {
                 method: "get",
                 data: {
@@ -219,7 +219,7 @@
 
             changeCode() {
 
-              $("#keycode")[0].src = "http://192.168.1.19:8086/springMVC/vaildCode";
+              $("#keycode")[0].src = "http://127.0.0.1:8086/springMVC/vaildCode";
 
             },
 

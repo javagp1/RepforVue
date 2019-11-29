@@ -55,7 +55,17 @@
   .goods_detail button:first-child{
     margin-top: 20px;
   }
-
+  .count_colle{
+    background-color: red;
+    color: white;
+    position:relative;
+    left: 115px;top:-10px;
+    display: inline-block;
+    padding: 0px 5px;
+    font-size: 5px;
+    border-radius: 15px ;
+    opacity: 0.9;
+  }
 
 
 </style>
@@ -69,7 +79,17 @@
         <br />
         <button><i class="fa fa-thumbs-o-up"></i></button>
         <br /> <br /> <br />
-        <button><i class="fa fa-star-o"></i></button>
+        <button v-if="goods.iscollected==true" @click.stop="deletecollection(goods.gdid)">
+               <i class="fa fa-star"></i>
+
+        </button>
+        <button v-if="goods.iscollected!=true" @click.stop="addcollection(goods.gdid)">
+           <i class="fa fa-star-o"></i>
+        </button>
+         <span class="count_colle">{{counts[i]}}</span>
+
+
+
          <br /> <br />
         <hr  style="width: 90%;" />
         {{goods.gdname}}
@@ -92,12 +112,19 @@
 				pagecount:0,
 				pagenum:1,
 				lock:false,
-				goodsid:""
+				goodsid:"",
+        collections:[],
+        iscollecteds:[],
+        useronline:false,
+        count:0,
+        counts:[],
+
 			};
 
 		},
 		mounted(){
 			this.goodsid=this.$route.query.gid;
+
 
 
 			var ob=this;
@@ -120,7 +147,8 @@
 					ob.lock=false;
 				}
 			});
-
+      this.valid_userOnline();
+      this.getcollectongdid();
 			this.getInfo(this.pagenum);
 
 		},
@@ -133,9 +161,10 @@
 			getInfo(pagenum){
 				var ob=this;
 
-				var url="http://192.168.1.19:8086/springMVC/goodsinfoctrl/getinfoes";
+				var url="http://127.0.0.1:8086/springMVC/goodsinfoctrl/getinfoes";
 				$.ajax(url,{
 						method:"post",
+
 						data:{"pagenum":pagenum},
 						dataType:"json",
 						xhrFields: {"withCredentials": true},
@@ -145,9 +174,15 @@
 
 							for(var i in result.infoes){
 								result.infoes[i].stl={
-									"background-image": "url('http://192.168.1.19:8086/springMVC/tp/"+result.infoes[i].gimgurl+"')",
+									"background-image": "url('http://127.0.0.1:8086/springMVC/tp/"+result.infoes[i].gimgurl+"')",
 								};
+                ob.collected_count(result.infoes[i].gdid);
+                if(ob.collections.indexOf(result.infoes[i].gdid)!=-1){
+                  result.infoes[i].iscollected=true;
 
+                }else{
+                  result.infoes[i].iscollected=false;
+                }
 
 								ob.list.push(result.infoes[i]);
 
@@ -158,8 +193,123 @@
 				)
 
 
-			}
- 
+			},
+      addcollection(gdid){
+        var ob=this;
+        if(ob.useronline==""){
+          ob.$router.push({
+            "name":"login"
+          })
+          return;
+        }
+        var url="http://127.0.0.1:8086/springMVC/goodscollctionctrl/addcollection";
+        $.ajax(url,{
+
+        		data:{"gdid":gdid},
+
+        		xhrFields: {"withCredentials": true},
+        		success:function(result){
+              if(result){
+                  ob.list[gdid-1].iscollected=true;
+                  ob.counts[gdid-1]+=1;
+              }
+
+
+        		}
+        	}
+        )
+      },
+    deletecollection(gdid){
+      var ob=this;
+
+      var url="http://127.0.0.1:8086/springMVC/goodscollctionctrl/deletecollection";
+      $.ajax(url,{
+
+      		data:{"gdid":gdid},
+
+      		xhrFields: {"withCredentials": true},
+      		success:function(result){
+            if(result){
+               ob.list[gdid-1].iscollected=false;
+               ob.counts[gdid-1]-=1;
+            }
+
+
+      		}
+      	}
+      )
+    },
+    getcollectongdid(){
+      var ob=this;
+      if(!ob.useronline){
+        return;
+      }
+      var url="http://127.0.0.1:8086/springMVC/goodscollctionctrl/getusercollection";
+      $.ajax(url,{
+      		method:"post",
+
+      		dataType:"json",
+      		xhrFields: {"withCredentials": true},
+      		success:function(result){
+          for(var i in result){
+
+            ob.collections.push(result[i].gdid);
+
+          }
+          console.log(ob.collections);
+      		}
+      	}
+      )
+    },
+    goodiscollected(gdid){
+      for(var i in this.collections){
+        if(gdid==this.collections[i]){
+          return true;
+
+
+
+        }
+
+      }
+      return false;
+
+
+    },
+    valid_userOnline(){
+
+    	var ob=this;
+    	ob.useronline=false;
+    	var url="http://127.0.0.1:8086/springMVC/userctrl/useronline";
+    	$.ajax(url,{
+    	xhrFields: {"withCredentials": true},
+    	async:false,
+    	success:function(result){
+
+    		ob.useronline=(result!="");
+    	}});
+
+    },
+    collected_count(gdid){
+      var ob=this;
+
+      var url="http://127.0.0.1:8086/springMVC/goodscollctionctrl/countcollection";
+      var c;
+      $.ajax(url,{
+
+      		data:{"gdid":gdid},
+          async:true,
+      		xhrFields: {"withCredentials": true},
+      		success:function(result){
+
+           ob.counts.push(result);
+
+
+      		}
+      	}
+      )
+
+    },
+
 
 		}
 
