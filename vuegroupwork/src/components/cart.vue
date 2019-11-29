@@ -49,7 +49,7 @@
 								<td>尺码</td>
 								<td>单价</td>
 								<td>数量</td>
-								<td>单项合集</td>
+								<td>单项合计</td>
 								<td>操作</td>
 								<td>全部  <input type="checkbox" value="1" v-model="chooseAll" /> 结算</td>
 

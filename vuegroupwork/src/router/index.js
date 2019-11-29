@@ -7,14 +7,13 @@ import login from '@/components/login.vue'
 import cart from '@/components/cart.vue'
 import orderinfo from '@/components/orderinfo.vue'
 import orderinfo_records from '@/components/orderinfo_records.vue'
-
-import merchant_order from '@/components/merchant_order.vue'
+import usercollection from '@/components/usercollection.vue'
+import merchant_order from '@/components/merchant_order'
 
 Vue.use(Router)
 
 export default new Router({
-  routes: [
-    {
+  routes: [{
       path: '/',
       name: 'main',
       component: main
@@ -24,38 +23,45 @@ export default new Router({
       name: 'maingoodsinfodetails',
       component: maingoodsinfodetails
     },
-     {
-          path: '/register',
-          name: 'register',
-          component: register
-        },
-        {
-             path: '/login',
-             name: 'login',
-             component: login
-           },
-           {
-                path: '/cart',
-                name: 'cart',
-                component: cart
-              },
-              {
-                   path: '/orderinfo',
-                   name: 'orderinfo',
-                   component: orderinfo
-                 },
-                 {
-                      path: '/orderinfo_records',
-                      name: 'orderinfo_records',
-                      component: orderinfo_records
-                    },
-                 {
-                      path: '/merchant_order',
-                      name: 'merchant_order',
-                      component: merchant_order
-                    },
-              
-           
+    {
+      path: '/register',
+      name: 'register',
+      component: register
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: login
+    },
+    {
+      path: '/cart',
+      name: 'cart',
+      component: cart
+    },
+    {
+      path: '/orderinfo',
+      name: 'orderinfo',
+      component: orderinfo
+    },
+    {
+      path: '/orderinfo_records',
+      name: 'orderinfo_records',
+      component: orderinfo_records
+    },
+    {
+      path: '/usercollection',
+      name: 'usercollection',
+      component: usercollection
+    },
+
+    {
+      path: '/merchant_order',
+      name: 'merchant_order',
+      component: merchant_order
+    },
+
+
+
 
 
 
