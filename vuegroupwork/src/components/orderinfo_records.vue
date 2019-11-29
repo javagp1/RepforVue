@@ -63,9 +63,9 @@
 									{{order.ofid}}
 
 								</td>
-                <td>
-                  <button class="btn btn-danger" @click="toAliPay(order.ofid)">{{ toofstate(order) }}</button>
-                </td>
+                <td v-if="order.ofstate==1">未付款 &nbsp;&nbsp;&nbsp;
+                	<button class="btn btn-danger" @click="toAliPay(order.ofid)">付款</button></td>
+                <td v-else="order.ofstate==2" >已付款 </td>
 
 								<td>{{order.ofdate}}</td>
 								<td>
