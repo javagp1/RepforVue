@@ -45,7 +45,7 @@
 			pay(){
 
 				var ob=this;
-				var url="http://192.168.1.19:8086/springMVC/orderinfoctrl/creatorder";
+				var url="http://127.0.0.1:8086/springMVC/orderinfoctrl/creatorder";
 				$.ajax(url,{
 				data:{
 					address:ob.address,
