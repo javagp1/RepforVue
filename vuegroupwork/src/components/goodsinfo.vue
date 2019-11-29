@@ -86,7 +86,7 @@
         <button v-if="goods.iscollected!=true" @click.stop="addcollection(goods.gdid)">
            <i class="fa fa-star-o"></i>
         </button>
-         <span class="count_colle">{{counts[i]}}</span>
+         <span class="count_colle">{{goods.count}}</span>
 
 
 
@@ -176,7 +176,7 @@
 								result.infoes[i].stl={
 									"background-image": "url('http://127.0.0.1:8086/springMVC/tp/"+result.infoes[i].gimgurl+"')",
 								};
-                ob.collected_count(result.infoes[i].gdid);
+                ob.collected_count(result.infoes[i].gdid,i);
                 if(ob.collections.indexOf(result.infoes[i].gdid)!=-1){
                   result.infoes[i].iscollected=true;
 
@@ -289,7 +289,7 @@
     	}});
 
     },
-    collected_count(gdid){
+    collected_count(gdid,i){
       var ob=this;
 
       var url="http://127.0.0.1:8086/springMVC/goodscollctionctrl/countcollection";
@@ -301,7 +301,7 @@
       		xhrFields: {"withCredentials": true},
       		success:function(result){
 
-           ob.counts.push(result);
+           ob.list[i].cocount=result;
 
 
       		}
