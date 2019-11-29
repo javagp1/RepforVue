@@ -8,6 +8,8 @@ import cart from '@/components/cart.vue'
 import orderinfo from '@/components/orderinfo.vue'
 import orderinfo_records from '@/components/orderinfo_records.vue'
 
+import merchant_order from '@/components/merchant_order.vue'
+
 Vue.use(Router)
 
 export default new Router({
@@ -47,7 +49,11 @@ export default new Router({
                       name: 'orderinfo_records',
                       component: orderinfo_records
                     },
-                 
+                 {
+                      path: '/merchant_order',
+                      name: 'merchant_order',
+                      component: merchant_order
+                    },
               
            
 
