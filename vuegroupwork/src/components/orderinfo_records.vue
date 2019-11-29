@@ -47,7 +47,8 @@
 							<tr class="text-warning">
 								<td>序号</td>
 								<td>编号</td>
-						  
+                <td>状态</td>
+
 								<td>下单日期</td>
 								<td>操作</td>
 
@@ -59,10 +60,13 @@
 							<tr v-for="(order,index) in orderinfoes" >
 								<td>{{index+1}}</td>
 								<td>
-									{{order.ofid}}<button class="btn btn-danger" @click="toAliPay(order.ofid)">付款</button></td>
+									{{order.ofid}}
 
 								</td>
-						    
+                <td>
+                  <button class="btn btn-danger" @click="toAliPay(order.ofid)">{{ toofstate(order) }}</button>
+                </td>
+
 								<td>{{order.ofdate}}</td>
 								<td>
 									<button class="btn btn-link btn-sm">
@@ -92,9 +96,10 @@
 	export default{
 		components:{search,toolbar_1,newcloth},
 
+
 		data(){
 			return {
-				orderinfoes:[]
+				orderinfoes:[],
 
 			}
 
@@ -102,10 +107,23 @@
 		mounted(){
 
 			this.getOrderInfoes();
+
 		},
 
 
 		methods:{
+
+    toofstate(order){
+
+        if(order.ofstate==1){
+          return "未付款"
+        }else{
+          return "已付款"
+        }
+
+      }
+      ,
+
 			toAliPay(orderid){
 
 				window.open("http://127.0.0.1:8086/springMVC/ali/pay?ofid="+orderid);

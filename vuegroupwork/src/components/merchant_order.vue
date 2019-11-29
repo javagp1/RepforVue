@@ -34,11 +34,12 @@
 
 								<td>{{order.price}}</td>
                 <td>
-                  
+                  <span  >{{ toolstatus(order) }}</span>
+
 
                 </td>
 								<td>
-									<button class="btn btn-danger" @click="toAliPay(order.ofid)">发货</button></td>
+									<button class="btn btn-danger" @click="toAliPay(order.ofid)">发货</button>
 								</td>
 
 							</tr>
@@ -75,6 +76,14 @@
 
 
     methods:{
+      toolstatus(order){
+        if(order.olstatus==1){
+          return "未付款"
+        }else{
+          return "已付款"
+        }
+
+      },
 
     	getorderInfoesbystuser(){
 
