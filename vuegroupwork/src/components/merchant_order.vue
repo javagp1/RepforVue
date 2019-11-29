@@ -34,11 +34,11 @@
 
 								<td>{{order.price}}</td>
                 <td>
-                  
 
+                  <span >{{toolstatus(order)}}</span>
                 </td>
 								<td>
-									<button class="btn btn-danger" @click="toAliPay(order.ofid)">发货</button></td>
+									<button class="btn btn-danger">发货</button>
 								</td>
 
 							</tr>
@@ -63,8 +63,7 @@
   	components:{search,toolbar_1,newcloth},
     data(){
     	return {
-    		orderinfoes:[]
-
+    		orderinfoes:[],
     	}
 
     },
@@ -75,6 +74,21 @@
 
 
     methods:{
+
+
+      toolstatus(order){
+              if(order.olstatus==4){
+                return "已付款"
+              }else if(order.olstatus==1){
+                return "未付款"
+              }else if(order.olstatus==2){
+                return "已付款，未发货"
+              }else{
+                return "已发货,未付款"
+              }
+            }
+            ,
+
 
     	getorderInfoesbystuser(){
 
