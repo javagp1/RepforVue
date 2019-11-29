@@ -1,4 +1,3 @@
-
 <template>
   <div>
     <div class="header-wrap">
@@ -8,18 +7,16 @@
 
     <div class="loginbox" :class="{'loginbox_withtip':error_show}">
       <div style="width: 100%;min-height: 100%;">
-        <div style="width: 100%;height: 50px;" v-bind:class="active">
-          <div class="user" @click="makeActive('user'),stuser(0)">用户登录</div>
-          <div class="business"v-on:click="makeActive('business'),stuser(1)">商家登录</div>
+        <div style="width: 100%;height: 50px;">
+          <div class="logtitle">用户登录</div>
+          <div class="logtitle"></div>
         </div>
 
       <div :class="{'errortip':error_show}" >{{tip}}{{validCode_error}}</div>
-    <div class="iptbox"> <input v-if="istuser==0" class="logipt" type="text" placeholder="用户名" v-model="logname" />
-    <input v-else="istuser==1" class="logipt" type="text" placeholder="用户名" v-model="slogname" />
-
+    <div class="iptbox"> <input class="logipt" type="text" placeholder="用户名" v-model="logname" />
+      </span>
     </div>
-    <div class="iptbox"><input v-if="istuser==0" class="logipt" placeholder="密码" type="password" v-model="password" />
-    <input v-else="istuser==1" class="logipt" placeholder="密码" type="password" v-model="spassword" /></div>
+    <div class="iptbox"><input class="logipt" placeholder="密码" type="password" v-model="password" /> </div>
     <div class="iptbox">
       <div style="height: 50px;width: 315px;margin: auto;">
         <input class="valid" placeholder="验证码"  type="text"  v-model="validCode" />
@@ -28,17 +25,15 @@
     </div>
     <div class="iptbox">
 
-      <button v-if="istuser==0" class="submit" @click="login()">登录</button>
-      <button v-else="istuser==1" class="submit" @click="slogin()">登录</button>
+      <button class="submit" @click="login()">登录</button>
 
-
-
+ 
     </div>
-    <div class="iptbox"><a @click="register()">用户免费注册</a> </div>
+    <div class="iptbox"><a @click="register()">免费注册</a> </div>
     </div>
     </div>
   </div>
-  </div>
+  </div> 
 </template>
 
 <script>
@@ -46,77 +41,35 @@
     data() {
 
       return {
-        istuser:0,
-        active: 'user',
+
         logname: "",
         password: "",
+
+
         validCode: "",
         validCode_error: "",
+
+
         tiptext:["用户不存在","密码错误","用户已被冻结"],
         tip:"",
-        error_show:false,
-        slogname:"",
-        spassword:"",
+        error_show:false
       };
 
     },
 
 
     methods: {
-      stuser(stuser){
-        this.istuser=stuser;
-      },
-
-       makeActive: function(item){
-      			// 模型改变，视图会自动更新
-      			this.active = item;
-
-      		},
       home(){
         this.$router.push(
         {
           "name":"main"
         })
       },
-      slogin() {
-          var ob = this;
-          ob.tip="";
-          ob.validCodeIsOK();
-          if(ob.validCode_error != ""){
-            return;
-          }
-
-          var url = "http://127.0.0.1:8086/springMVC/userctrl/slogin";
-          $.ajax(url, {
-            method: "post",
-            data: {
-              "slogname": ob.slogname,
-              "spassword": ob.spassword
-            },
-            xhrFields: {
-              "withCredentials": true
-            },
-            success: function(result) {
-              var regok= ob.$route.query.regok;
-              if(result==1){
-              ob.$router.push({"name":"merchant_order"});
-            
-               ob.error_show=false;
-
-
-              }else{
-                ob.tip=ob.tiptext[result-2]
-                ob.error_show=true;
-              }
-            }
-          })
-
-
-
-
-
-      },
       login() {
+
+
+
+
           var ob = this;
           ob.tip="";
           ob.validCodeIsOK();
@@ -262,25 +215,18 @@
   .loginbox_withtip{
     height: 400px;
   }
-  .user,.business{
+  .logtitle{
     width: 50%;
     height: 100%;
     margin-top: 0px;
     float: left;
     text-align: center;
     line-height: 50px;
-    color: #3C3C3C;
+    color: #fe617a;
     font-size: 14px;
     font-weight: 700;
     border-bottom: 1px solid #ccc;
     margin-bottom:9px;
-    display:inline-block;
-    cursor: pointer;
-  }
-  div.user .user,
-  div.business .business{
-    color:#FF3F33;
-    border-bottom-color: #FF3F33;
   }
   .errortip{
         background: url(https://s10.mogucdn.com/pic/140408/o613k_kqzfunswozbg2s2ugfjeg5sckzsew_16x16.png) 12px no-repeat #fffff8;
