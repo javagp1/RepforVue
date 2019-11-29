@@ -42,13 +42,21 @@
     	 					<i class="fa fa-qrcode fa-2x" style="display: block;"></i>
     	 					App下载
     	 				</div>
-              <div v-if="useronline==''" style="float: right;margin-top: 6px;" @click="toLogin()">
+              <div v-if="useronline==''&&stuseronline==''" style="float: right;margin-top: 6px;" @click="toLogin()">
                  <i class="fa fa-sign-in" style="font-size:18px;background-color: orangered;width: 30px;height: 30px;border-radius: 100px;line-height: 30px;color:#ffffff" ></i>
                  &nbsp;登&nbsp;录
               </div>
-              <div v-if="useronline!=''" style="float: right;margin-top: 6px;font-size: 15px;" >
+
+              <div v-if="useronline!=''" style="float: right;margin-top: -5px;font-size: 15px;" >
                 你好，{{useronline.logname}}<button class="btn btn-link" @click="logout()" >退出</button>
               </div>
+
+
+
+              <div v-if="stuseronline!=''" style="float: right;margin-top: -5px;font-size: 15px;" >
+                你好，{{stuseronline.slogname}}<button class="btn btn-link" @click="stlogout()" >退出</button>
+              </div>
+
     	 			</div>
 
 
@@ -71,7 +79,8 @@
 				style_1:true,
 				searchshow:true,
 				timer2:"",
-				useronline:""
+				useronline:"",
+        stuseronline:"",
 
 			};
 		},
@@ -80,6 +89,7 @@
 
 			this.searchFollow();
 			this.valid_userOnline();
+      this.valid_stuserOnline();
 
 		}
 		,methods:{
@@ -102,6 +112,22 @@
       				this.$router.push({"name":"cart"});
       			}
       			,
+
+            stlogout(){
+            	var ob=this;
+              var url="http://127.0.0.1:8086/springMVC/userctrl/stlogout";
+              $.ajax(url,{
+              xhrFields: {"withCredentials": true},
+              success:function(result){
+                if(result){
+
+                  ob.stuseronline="";
+                  ob.$router.push({"name":"main"});
+                }
+
+              }});
+
+            },
       			logout(){
       				var ob=this;
               var url="http://127.0.0.1:8086/springMVC/userctrl/logout";
@@ -111,6 +137,7 @@
                 if(result){
 
                   ob.useronline="";
+                  ob.suseronline="";
                   ob.$router.push({"name":"main"});
                 }
 
@@ -133,6 +160,22 @@
       				}});
 
       			},
+            valid_stuserOnline(){
+            	var ob=this;
+            	var url="http://127.0.0.1:8086/springMVC/userctrl/stuseronline";
+            	$.ajax(url,{
+            	xhrFields: {"withCredentials": true},
+            	async:false,
+            	success:function(result){
+            		if(result){
+
+            			ob.stuseronline=result;
+
+            		}
+
+            	}});
+
+            },
 
 
       			searchFollow(){

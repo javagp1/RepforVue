@@ -14,10 +14,12 @@
         </div>
 
       <div :class="{'errortip':error_show}" >{{tip}}{{validCode_error}}</div>
-    <div class="iptbox"> <input class="logipt" type="text" placeholder="用户名" v-model="logname" />
-      </span>
+    <div class="iptbox"> <input v-if="istuser==0" class="logipt" type="text" placeholder="用户名" v-model="logname" />
+    <input v-else="istuser==1" class="logipt" type="text" placeholder="用户名" v-model="slogname" />
+
     </div>
-    <div class="iptbox"><input class="logipt" placeholder="密码" type="password" v-model="password" /> </div>
+    <div class="iptbox"><input v-if="istuser==0" class="logipt" placeholder="密码" type="password" v-model="password" />
+    <input v-else="istuser==1" class="logipt" placeholder="密码" type="password" v-model="spassword" /></div>
     <div class="iptbox">
       <div style="height: 50px;width: 315px;margin: auto;">
         <input class="valid" placeholder="验证码"  type="text"  v-model="validCode" />
@@ -26,7 +28,8 @@
     </div>
     <div class="iptbox">
 
-      <button class="submit" @click="login()">登录</button>
+      <button v-if="istuser==0" class="submit" @click="login()">登录</button>
+      <button v-else="istuser==1" class="submit" @click="slogin()">登录</button>
 
 
 
@@ -51,7 +54,9 @@
         validCode_error: "",
         tiptext:["用户不存在","密码错误","用户已被冻结"],
         tip:"",
-        error_show:false
+        error_show:false,
+        slogname:"",
+        spassword:"",
       };
 
     },
@@ -85,16 +90,18 @@
           $.ajax(url, {
             method: "post",
             data: {
-              "logname": ob.slogname,
-              "password": ob.spassword
+              "slogname": ob.slogname,
+              "spassword": ob.spassword
             },
             xhrFields: {
               "withCredentials": true
             },
             success: function(result) {
               var regok= ob.$route.query.regok;
-              if(result==1&&ob.istuser==1){
+              if(result==1){
               ob.$router.push({"name":"merchant_order"});
+            
+               ob.error_show=false;
 
 
               }else{
