@@ -79,14 +79,14 @@
         <br />
         <button><i class="fa fa-thumbs-o-up"></i></button>
         <br /> <br /> <br />
-        <button v-if="goods.iscollected==true" @click.stop="deletecollection(goods.gdid)">
+        <button v-if="goods.iscollected==true" @click.stop="deletecollection(goods.gdid,i)">
                <i class="fa fa-star"></i>
 
         </button>
-        <button v-if="goods.iscollected!=true" @click.stop="addcollection(goods.gdid)">
+        <button v-if="goods.iscollected!=true" @click.stop="addcollection(goods.gdid,i)">
            <i class="fa fa-star-o"></i>
         </button>
-         <span class="count_colle">{{goods.count}}</span>
+         <span class="count_colle">{{goods.ccount}}</span>
 
 
 
@@ -176,7 +176,7 @@
 								result.infoes[i].stl={
 									"background-image": "url('http://127.0.0.1:8086/springMVC/tp/"+result.infoes[i].gimgurl+"')",
 								};
-                ob.collected_count(result.infoes[i].gdid,i);
+
                 if(ob.collections.indexOf(result.infoes[i].gdid)!=-1){
                   result.infoes[i].iscollected=true;
 
@@ -194,7 +194,7 @@
 
 
 			},
-      addcollection(gdid){
+      addcollection(gdid,i){
         var ob=this;
         if(ob.useronline==""){
           ob.$router.push({
@@ -210,8 +210,9 @@
         		xhrFields: {"withCredentials": true},
         		success:function(result){
               if(result){
-                  ob.list[gdid-1].iscollected=true;
-                  ob.counts[gdid-1]+=1;
+                  ob.list[i].iscollected=true;
+                  ob.list[i].ccount+=1;
+
               }
 
 
@@ -219,7 +220,7 @@
         	}
         )
       },
-    deletecollection(gdid){
+    deletecollection(gdid,i){
       var ob=this;
 
       var url="http://127.0.0.1:8086/springMVC/goodscollctionctrl/deletecollection";
@@ -230,8 +231,8 @@
       		xhrFields: {"withCredentials": true},
       		success:function(result){
             if(result){
-               ob.list[gdid-1].iscollected=false;
-               ob.counts[gdid-1]-=1;
+               ob.list[i].iscollected=false;
+               ob.list[i].ccount-=1;
             }
 
 
@@ -289,26 +290,7 @@
     	}});
 
     },
-    collected_count(gdid,i){
-      var ob=this;
 
-      var url="http://127.0.0.1:8086/springMVC/goodscollctionctrl/countcollection";
-      var c;
-      $.ajax(url,{
-
-      		data:{"gdid":gdid},
-          async:true,
-      		xhrFields: {"withCredentials": true},
-      		success:function(result){
-
-           ob.list[i].cocount=result;
-
-
-      		}
-      	}
-      )
-
-    },
 
 
 		}

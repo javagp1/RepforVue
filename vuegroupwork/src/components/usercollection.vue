@@ -18,8 +18,8 @@
       <tbody>
         <tr v-for="(colle,i) in usercollections">
           <td>{{i+1}}</td>
-          <td><div class="collecimg" :style="colle.bgimg"></div></td>
-          <td>{{colle.gdname}}</td>
+          <td><div class="collecimg" :style="colle.bgimg" @click="getDetailByGdid(colle.gdid)"></div></td>
+          <td><button class="btn btn-link" @click="getDetailByGdid(colle.gdid)">{{colle.gdname}}</button></td>
           <td><span style="font-size: 26px;font-weight: bold;color:#EF2F23;"><i class="fa fa-rmb"></i>{{colle.price}}</span></td>
           <td><button @click="deletecollection(colle.gdid)" class="btn btn-danger fa fa-close"></button></td>
         </tr>
@@ -42,6 +42,9 @@
       }
     },
     methods:{
+      getDetailByGdid(gdid){
+        this.$router.push({"name":"maingoodsinfodetails","query":{"gdid":gdid}})
+      },
       getAllcollection(){
         var ob=this;
 
@@ -86,8 +89,8 @@
         	}
         )
         }
-          
-        
+
+
       },
     },
     mounted(){
@@ -104,5 +107,18 @@
     margin: auto;
     margin-top: 6px;
     background-size: 100%;
+    cursor: pointer;
+  }
+  .dv_newcloth {
+  	padding-left: 30px;
+  	border-right: #DDDDDD solid 0px;
+  	text-align: left;
+  	width: 230px;
+  	height: 100%;
+  	background-color: ;
+  	position: relative;
+  	left: 0px;
+  	float: left;
+  	padding-top: 30px;
   }
 </style>
