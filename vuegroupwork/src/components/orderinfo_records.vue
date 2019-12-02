@@ -113,17 +113,6 @@
 
 		methods:{
 
-    toofstate(order){
-
-        if(order.ofstate==1){
-          return "未付款"
-        }else{
-          return "已付款"
-        }
-
-      }
-      ,
-
 			toAliPay(orderid){
 
 				window.open("http://127.0.0.1:8086/springMVC/ali/pay?ofid="+orderid);
@@ -142,6 +131,7 @@
 				xhrFields: {"withCredentials": true},
 				success:function(result){
 					ob.orderinfoes=result;
+         
 				}});
 			}
 

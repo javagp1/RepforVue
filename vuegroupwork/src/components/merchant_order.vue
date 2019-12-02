@@ -38,8 +38,9 @@
 
 
                 </td>
-								<td>
-									<button class="btn btn-danger" @click="toAliPay(order.ofid)">发货</button>
+								<td v-if="order.olstatus==6">完成</td>
+
+								<td >	<button class="btn btn-danger" @click="getsendgoods(order.olid)">发货</button>
 								</td>
 
 							</tr>
@@ -72,6 +73,7 @@
     mounted(){
 
     	this.getorderInfoesbystuser();
+      this.getsendgoods();
     },
 
 
@@ -101,7 +103,20 @@
           console.log(result);
 
     		}});
-    	}
+    	},
+      getsendgoods(olid){
+
+      	var ob=this;
+      	var url="http://127.0.0.1:8086/springMVC/orderinfoctrl/getsendgoods";
+      	$.ajax(url,{
+      	dataType:"json",
+      	xhrFields: {"withCredentials": true},
+      	success:function(result){
+          alert("ok");
+
+
+      	}});
+      },
 
     }
 
