@@ -10,6 +10,8 @@ import orderinfo_records from '@/components/orderinfo_records.vue'
 import usercollection from '@/components/usercollection.vue'
 import merchant_order from '@/components/merchant_order'
 import administer from '@/components/administer'
+import commodityaddition from '@/components/commodityaddition'
+
 
 Vue.use(Router)
 
@@ -61,10 +63,18 @@ export default new Router({
       component: merchant_order
     },
     {
+
       path: '/administer',
       name: 'administer',
       component: administer
     },
+
+    {
+      path: '/commodityaddition',
+      name: 'commodityaddition',
+      component: commodityaddition
+    },
+
 
 
 

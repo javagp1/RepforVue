@@ -40,7 +40,8 @@
                 </td>
 								<td v-if="order.olstatus==6">完成</td>
 
-								<td >	<button class="btn btn-danger" @click="getsendgoods(order.olid)">发货</button>
+								<td v-if="order.olstatus==4">	<button class="btn btn-danger" @click="getsendgoods(order.olid)">发货</button>
+                <td v-if="order.olstatus==1">	<button class="btn disabled" >发货</button>
 								</td>
 
 							</tr>
@@ -65,7 +66,7 @@
   	components:{search,toolbar_1,newcloth},
     data(){
     	return {
-    		orderinfoes:[]
+    		orderinfoes:[],
 
     	}
 
@@ -73,7 +74,6 @@
     mounted(){
 
     	this.getorderInfoesbystuser();
-      this.getsendgoods();
     },
 
 
@@ -92,6 +92,7 @@
     		var ob=this;
     		var url="http://127.0.0.1:8086/springMVC/orderinfoctrl/getorderInfoesbystuser";
     		$.ajax(url,{
+
     		dataType:"json",
     		xhrFields: {"withCredentials": true},
     		success:function(result){
@@ -109,11 +110,14 @@
       	var ob=this;
       	var url="http://127.0.0.1:8086/springMVC/orderinfoctrl/getsendgoods";
       	$.ajax(url,{
+          data: {
+
+            "olid": olid
+          },
       	dataType:"json",
       	xhrFields: {"withCredentials": true},
       	success:function(result){
-          alert("ok");
-
+            ob.getorderInfoesbystuser();
 
       	}});
       },

@@ -3,12 +3,12 @@
   <div class="toolbar_top1">
 
     <div class="pull-right" style="color:#999999;font-size: 15px;" >
-      
+
       <button class="btn btn-link" @click="browseMain()"><i class="fa fa-home"  ></i>&nbsp;&nbsp;首页&nbsp;&nbsp;&nbsp;&nbsp;|</button>
       <button class="btn btn-link"><i class="fa fa-shopping-bag"></i>&nbsp;&nbsp;&nbsp;&nbsp;商城&nbsp;&nbsp;&nbsp;&nbsp;|</button>
       <button class="btn btn-link">我的订单&nbsp;&nbsp;&nbsp;&nbsp;|</button>
       <button class="btn btn-link">关于我们</button>
-      <button class="btn btn-link">商家</button>
+      <button class="btn btn-link" @click="browsecommodity()">商家添加信息</button>
     </div>
 
   </div>
@@ -22,6 +22,10 @@
       browseMain(){
       				this.$router.push({"name":"main"});
       			},
+      browsecommodity(){
+      				this.$router.push({"name":"commodityaddition"});
+      			},
+
 
     },
   }
