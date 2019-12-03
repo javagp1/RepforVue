@@ -9,6 +9,7 @@ import orderinfo from '@/components/orderinfo.vue'
 import orderinfo_records from '@/components/orderinfo_records.vue'
 import usercollection from '@/components/usercollection.vue'
 import merchant_order from '@/components/merchant_order'
+import administer from '@/components/administer'
 
 Vue.use(Router)
 
@@ -58,6 +59,11 @@ export default new Router({
       path: '/merchant_order',
       name: 'merchant_order',
       component: merchant_order
+    },
+    {
+      path: '/administer',
+      name: 'administer',
+      component: administer
     },
 
 

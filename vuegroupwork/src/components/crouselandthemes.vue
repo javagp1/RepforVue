@@ -2,8 +2,8 @@
   <div class="dv_main_1">
     <div class="dv_carousel"  @mouseover="stopchangeImg()" @mouseout="changeImg_auto()">
 
-     <transition name="fade" v-for="(cr,index) in carousels" key="index">
-     	<div class="carousel"  v-if="index==c_index"  :style="cr"></div>
+     <transition name="fade" v-for="(cr,index) in carouselimg" key="index">
+     	<div class="carousel"  v-if="index==c_index"  @click="getDetailByGdid(cr.gdid)" :style="cr.stl"></div>
      </transition>
      <div class="toolbar_btn_next_previous">
        <button @click="changeImg(-1)"><i class="fa fa-chevron-left"></i></button>
@@ -22,17 +22,25 @@
     data:function(){
       return{
         carousels:[],
+        carouselimg:[],
         c_index:0,
         themes:[],
-        timer1:""
+        timer1:"",
+
       };
     },
     mounted(){
-      this.carousels.push({backgroundImage:"url(\"../static/mgj/mgj1.png\")"});
-      this.carousels.push({backgroundImage:"url(\"../static/mgj/mgj2.png\")"});
-      this.carousels.push({backgroundImage:"url(\"../static/mgj/mgj3.png\")"});
-      this.carousels.push({backgroundImage:"url(\"../static/mgj/mgj4.png\")"});
-      this.carousels.push({backgroundImage:"url(\"../static/mgj/mgj5.png\")"});
+      for(var i=1;i<=5;i++){
+        var img={};
+         img.stl={"background-image":"url(\"../static/mgj/mgj"+i+".png\")"},
+         img.gdid=0;
+         this.carousels.push(img);
+      }
+      console.log(this.carousels);
+
+
+      this.getcrouselimg();
+      this.changeImg_auto();
 
 
 
@@ -41,8 +49,18 @@
       this.themes.push("../static/theme/theme3.png");
       this.themes.push("../static/theme/theme4.png");
       this.themes.push("../static/theme/theme5.png");
+      for(var i in this.carousels){
+        if(this.carouselimg.length<5){
 
-      this.changeImg_auto();
+          this.carouselimg.push(this.carousels[i])
+          if(this.carouselimg.length==5){
+            break;
+          }
+        }
+      }
+
+
+      console.log(this.carouselimg)
 
 
     },
@@ -67,13 +85,38 @@
             ob.c_index=0;
           }
           ob.changeImg_auto();
-
+          // console.log(ob.c_index);
         },5000)
 
       },
       stopchangeImg(){
         window.clearTimeout(this.timer1);
-      }
+      },
+      getcrouselimg(){
+        var ob=this;
+        var url="http://127.0.0.1:8086/springMVC/carouselimgctrl/getcarouseimg";
+        $.ajax(url,{
+        xhrFields: {"withCredentials": true},
+        async:false,
+        method:"post",
+
+        success:function(result){
+        	for(var i in result){
+        		result[i].stl={
+        			"background-image": "url('http://127.0.0.1:8086/springMVC/carouselimg/"+result[i].cimgurl+"')",
+
+        		};
+            ob.carouselimg.push(result[i]);
+            }
+        }});
+      },
+      getDetailByGdid(gdid){
+        if(gdid>0){
+           this.$router.push({"name":"maingoodsinfodetails","query":{"gdid":gdid}})
+        }
+
+      },
+
     },
 }
 
