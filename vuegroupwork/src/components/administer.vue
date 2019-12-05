@@ -68,7 +68,7 @@
       	var url="http://127.0.0.1:8086/springMVC/carouselimgctrl/uploadimg";
       	$.ajax(url,{
       	xhrFields: {"withCredentials": true},
-
+        
         method:"post",
         dataType:"json",
         processData:false,
